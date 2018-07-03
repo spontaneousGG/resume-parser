@@ -252,6 +252,7 @@ class ConnectFlask():
             conn.row_factory = sqlite3.Row
             with contextlib.closing(connn.cursor()) as curs:
                 for word in words:
+                    curs.execute("SELECT * FROM degrees WHERE degree LIKE (?)", (word,))
 
     def pprint(self, table):
         import pandas as pd
